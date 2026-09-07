@@ -6,4 +6,4 @@ All notable changes to this project are documented here. Format follows [Keep a 
 
 First public release. Raft leader election and log replication with a deterministic simulator.
 
-[0.1.0]: https://github.com/parag-labs/mini-raft/releases/tag/v0.1.0
+[0.1.0]: https://github.com/parag-labs/coracle/releases/tag/v0.1.0

@@ -9,7 +9,7 @@
 // Keeping I/O out of the node is what lets the simulator replay elections and log
 // replication deterministically, and lets tests assert exact behavior.
 
-namespace MiniRaft;
+namespace Coracle;
 
 public enum Role { Follower, Candidate, Leader }
 

@@ -3,7 +3,7 @@
 // Indices are 1-based to match the Raft paper, so entries[0] is log index 1.
 // Index 0 is the empty sentinel "before the first entry".
 
-namespace MiniRaft;
+namespace Coracle;
 
 public sealed record LogEntry(int Term, object Command);
 

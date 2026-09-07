@@ -5,7 +5,7 @@
 // network can be partitioned or healed, so an entire election or a replication
 // round replays identically every run - which is what makes the tests reliable.
 
-namespace MiniRaft;
+namespace Coracle;
 
 public sealed class Cluster
 {

@@ -1,4 +1,4 @@
-# mini-raft
+# coracle
 
 A small, readable implementation of the [Raft](https://raft.github.io/) consensus
 algorithm - leader election and log replication - with a deterministic simulator so
@@ -6,6 +6,8 @@ you can watch an election happen, isolate a leader, partition the network, and s
 the cluster stay consistent. The same node logic is written three times - **Python,
 C#, and Java** - because Raft is a plain state machine, and porting it keeps the
 safety rules honest rather than a trick of one language.
+
+*A coracle is the smallest boat that still floats on its own - one person, one hull. This is the single, correct Raft group; its sibling [flotilla](https://github.com/parag-labs/flotilla) runs a fleet of them.*
 
 ## Why
 
@@ -112,7 +114,7 @@ sequenceDiagram
 ## Layout
 
 ```
-mini-raft/
+coracle/
 ├── python/         the Raft implementation + a deterministic simulator (pytest)
 ├── csharp/         the same node/log/cluster, ported to .NET 10 (xUnit)
 ├── java/           the same, in Java 17+ (JUnit / Maven)

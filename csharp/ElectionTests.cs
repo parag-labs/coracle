@@ -3,7 +3,7 @@
 
 using Xunit;
 
-namespace MiniRaft.Tests;
+namespace Coracle.Tests;
 
 public class ElectionTests
 {

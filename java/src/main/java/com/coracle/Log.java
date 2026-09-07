@@ -3,7 +3,7 @@
 // Indices are 1-based to match the Raft paper, so entries.get(0) is log index 1.
 // Index 0 is the empty sentinel "before the first entry".
 
-package com.miniraft;
+package com.coracle;
 
 import java.util.ArrayList;
 import java.util.List;

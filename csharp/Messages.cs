@@ -1,7 +1,7 @@
 // The RPC messages exchanged between nodes. These are plain data; the node returns
 // them from its handlers and the cluster delivers them.
 
-namespace MiniRaft;
+namespace Coracle;
 
 public abstract class Message
 {

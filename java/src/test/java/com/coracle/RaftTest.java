@@ -1,4 +1,4 @@
-package com.miniraft;
+package com.coracle;
 
 import static org.junit.jupiter.api.Assertions.*;
 

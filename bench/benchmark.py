@@ -1,4 +1,4 @@
-"""Benchmark harness for mini-raft.
+"""Benchmark harness for coracle.
 
 Everything here is measured on the deterministic simulator, so "time" is counted in
 simulation ticks, not wall-clock milliseconds - a tick is one round of message
@@ -81,7 +81,7 @@ def bench_election_by_size() -> dict:
     ax.plot(sizes, p99s, "s--", label="p99")
     ax.set_xlabel("cluster size (nodes)")
     ax.set_ylabel("ticks to elect a leader")
-    ax.set_title("mini-raft: election time vs cluster size")
+    ax.set_title("coracle: election time vs cluster size")
     ax.legend()
     ax.grid(True, alpha=0.3)
     fig.tight_layout()
@@ -114,7 +114,7 @@ def bench_election_under_loss() -> dict:
     ax2.plot([int(d * 100) for d in drops], [r * 100 for r in rates], "s--", color="tab:red")
     ax2.set_ylabel("elected within budget (%)", color="tab:red")
     ax2.tick_params(axis="y", labelcolor="tab:red")
-    ax1.set_title("mini-raft: election under packet loss (5 nodes)")
+    ax1.set_title("coracle: election under packet loss (5 nodes)")
     ax1.grid(True, alpha=0.3)
     fig.tight_layout()
     fig.savefig(RESULTS / "election_under_loss.png", dpi=110)
@@ -140,7 +140,7 @@ def bench_commit_latency() -> dict:
     ax.boxplot(box_data, tick_labels=[str(s) for s in sizes], showfliers=False)
     ax.set_xlabel("cluster size (nodes)")
     ax.set_ylabel("ticks from propose to commit")
-    ax.set_title("mini-raft: commit latency distribution")
+    ax.set_title("coracle: commit latency distribution")
     ax.grid(True, alpha=0.3)
     fig.tight_layout()
     fig.savefig(RESULTS / "commit_latency.png", dpi=110)

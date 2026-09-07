@@ -9,7 +9,7 @@
 // Keeping I/O out of the node is what lets the simulator replay elections and log
 // replication deterministically, and lets tests assert exact behavior.
 
-package com.miniraft;
+package com.coracle;
 
 import java.util.ArrayList;
 import java.util.HashMap;

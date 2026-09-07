@@ -1,9 +1,9 @@
-# mini-raft: design, trade-offs, and non-goals
+# coracle: design, trade-offs, and non-goals
 
 Status: accepted
 Author: Parag Sawant
 
-This is the reasoning behind mini-raft. I wrote it up because a consensus library
+This is the reasoning behind coracle. I wrote it up because a consensus library
 that you can't reason about is worse than no library - if you're going to trust it
 with "who is the leader and what is the log," you should be able to see exactly what
 it does and where it stops.
@@ -21,7 +21,7 @@ fighting timing flakiness. Concretely:
 
 ![leader election and replication](docs/diagrams/leader-election-sequence.png)
 
-*(Source: [`docs/diagrams/leader-election-sequence.excalidraw`](docs/diagrams/leader-election-sequence.excalidraw) - editable in [excalidraw](https://aka.ms/excalidraw).)*
+*(The same diagram renders inline as Mermaid in the [README](README.md#how-it-works); this PNG is a static export.)*
 
 ## Key design decision: the node does no I/O
 
