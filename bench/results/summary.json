@@ -1,0 +1,77 @@
+{
+  "trials_per_point": 200,
+  "unit": "simulation ticks (one delivery round + one tick per node)",
+  "election_by_size": {
+    "3": {
+      "mean": 14.04,
+      "p50": 13.0,
+      "p99": 19.0,
+      "success_rate": 0.99
+    },
+    "5": {
+      "mean": 13.25,
+      "p50": 13.0,
+      "p99": 17.0,
+      "success_rate": 1.0
+    },
+    "7": {
+      "mean": 12.83,
+      "p50": 13.0,
+      "p99": 16.0,
+      "success_rate": 1.0
+    },
+    "9": {
+      "mean": 12.53,
+      "p50": 12.0,
+      "p99": 15.0,
+      "success_rate": 1.0
+    }
+  },
+  "election_under_loss": {
+    "0.0": {
+      "mean": 13.25,
+      "p99": 17.0,
+      "success_rate": 1.0
+    },
+    "0.05": {
+      "mean": 13.41,
+      "p99": 22.0,
+      "success_rate": 1.0
+    },
+    "0.1": {
+      "mean": 13.52,
+      "p99": 24.0,
+      "success_rate": 1.0
+    },
+    "0.2": {
+      "mean": 15.76,
+      "p99": 38.0,
+      "success_rate": 1.0
+    },
+    "0.3": {
+      "mean": 19.79,
+      "p99": 57.0,
+      "success_rate": 1.0
+    }
+  },
+  "commit_latency": {
+    "3": {
+      "mean": 5.22,
+      "p50": 6.0,
+      "p99": 6.0,
+      "p99_9": 6.0
+    },
+    "5": {
+      "mean": 5.46,
+      "p50": 6.0,
+      "p99": 6.0,
+      "p99_9": 6.0
+    },
+    "7": {
+      "mean": 5.56,
+      "p50": 6.0,
+      "p99": 6.0,
+      "p99_9": 6.0
+    }
+  }
+}
