@@ -3,7 +3,9 @@
 A small, readable implementation of the [Raft](https://raft.github.io/) consensus
 algorithm - leader election and log replication - with a deterministic simulator so
 you can watch an election happen, isolate a leader, partition the network, and see
-the cluster stay consistent.
+the cluster stay consistent. The same node logic is written three times - **Python,
+C#, and Java** - because Raft is a plain state machine, and porting it keeps the
+safety rules honest rather than a trick of one language.
 
 ## Why
 
@@ -54,14 +56,20 @@ new_leader = c.run_until_leader()  # the majority elects a new one
 
 | Suite | What it proves | Tests |
 |-------|----------------|:-----:|
-| `test_log` | matching, conflict truncation, election restriction | 6 |
-| `test_election` | one leader emerges; re-election after isolation; stale candidates denied | 6 |
-| `test_replication` | in-order apply, catch-up, minority cannot commit | 5 |
-| `test_chaos` | safety holds under drops, duplication, reordering, rolling partitions, and a soak | 4 |
+| log | matching, conflict truncation, election restriction | 6 |
+| election | one leader emerges; re-election after isolation; stale candidates denied | 6 |
+| replication | in-order apply, catch-up, minority cannot commit | 5 |
+| chaos | safety holds under drops, duplication, reordering, rolling partitions, and a soak | 4 |
 
-```
-cd python && pytest -q
-```
+## Three languages, one behavior
+
+The same node, log, and cluster logic - and the same 21 tests - in each language:
+
+| Language | Tests | Run |
+|----------|:-----:|-----|
+| Python | 21 | `cd python && pytest -q` |
+| C# (.NET 10) | 21 | `cd csharp && dotnet test` |
+| Java (17+) | 21 | `cd java && mvn test` |
 
 ## Design notes and numbers
 
@@ -106,6 +114,8 @@ sequenceDiagram
 ```
 mini-raft/
 ├── python/         the Raft implementation + a deterministic simulator (pytest)
+├── csharp/         the same node/log/cluster, ported to .NET 10 (xUnit)
+├── java/           the same, in Java 17+ (JUnit / Maven)
 ├── bench/          benchmark.py - election and replication timing
 ├── DESIGN.md       leader election, log replication, the safety argument
 └── BENCHMARKS.md   reproducible numbers
