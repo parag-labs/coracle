@@ -81,6 +81,26 @@ cd python && pytest -q
 - **No membership changes or snapshotting.** Joint-consensus reconfiguration and log
   compaction are the natural next chapters and aren't implemented here.
 
+## How it works
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant A as follower A - candidate
+  participant B as follower B
+  participant C as follower C
+  Note over A: election timeout, term++, vote for self
+  A->>B: RequestVote(term, lastLogIndex/term)
+  A->>C: RequestVote(...)
+  B-->>A: voteGranted (log up-to-date)
+  C-->>A: voteGranted
+  Note over A: majority reached, becomes LEADER
+  A->>B: AppendEntries(prevIdx/term, entries[])
+  A->>C: AppendEntries(...)
+  B-->>A: success (matched + appended)
+  C-->>A: success
+```
+
 ## Layout
 
 ```
