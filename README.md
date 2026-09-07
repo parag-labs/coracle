@@ -107,7 +107,6 @@ sequenceDiagram
 mini-raft/
 ├── python/         the Raft implementation + a deterministic simulator (pytest)
 ├── bench/          benchmark.py - election and replication timing
-├── docs/diagrams/  architecture diagrams
 ├── DESIGN.md       leader election, log replication, the safety argument
 └── BENCHMARKS.md   reproducible numbers
 ```
