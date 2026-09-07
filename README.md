@@ -86,19 +86,19 @@ cd python && pytest -q
 ```mermaid
 sequenceDiagram
   autonumber
-  participant A as follower A - candidate
-  participant B as follower B
-  participant C as follower C
-  Note over A: election timeout, term++, vote for self
-  A->>B: RequestVote(term, lastLogIndex/term)
-  A->>C: RequestVote(...)
-  B-->>A: voteGranted (log up-to-date)
-  C-->>A: voteGranted
-  Note over A: majority reached, becomes LEADER
-  A->>B: AppendEntries(prevIdx/term, entries[])
-  A->>C: AppendEntries(...)
-  B-->>A: success (matched + appended)
-  C-->>A: success
+  participant A as Follower A
+  participant B as Follower B
+  participant C as Follower C
+  Note over A: election timeout
+  A->>B: RequestVote
+  A->>C: RequestVote
+  B-->>A: granted
+  C-->>A: granted
+  Note over A: becomes leader
+  A->>B: AppendEntries
+  A->>C: AppendEntries
+  B-->>A: ok
+  C-->>A: ok
 ```
 
 ## Layout
