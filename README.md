@@ -3,9 +3,9 @@
 A small, readable implementation of the [Raft](https://raft.github.io/) consensus
 algorithm - leader election and log replication - with a deterministic simulator so
 you can watch an election happen, isolate a leader, partition the network, and see
-the cluster stay consistent. The same node logic is written three times - **Python,
-C#, and Java** - because Raft is a plain state machine, and porting it keeps the
-safety rules honest rather than a trick of one language.
+the cluster stay consistent. The same node logic is written six times - **Python,
+C#, Java, Go, Rust, and TypeScript** - because Raft is a plain state machine, and
+porting it keeps the safety rules honest rather than a trick of one language.
 
 *A coracle is the smallest boat that still floats on its own - one person, one hull. This is the single, correct Raft group; its sibling [flotilla](https://github.com/parag-labs/flotilla) runs a fleet of them.*
 
@@ -63,15 +63,26 @@ new_leader = c.run_until_leader()  # the majority elects a new one
 | replication | in-order apply, catch-up, minority cannot commit | 5 |
 | chaos | safety holds under drops, duplication, reordering, rolling partitions, and a soak | 4 |
 
-## Three languages, one behavior
+## Six languages, one behavior
 
-The same node, log, and cluster logic - and the same 21 tests - in each language:
+The same node, log, and cluster logic in each language. The three original ports
+share a 21-test suite; the Go, Rust, and TypeScript ports carry the same coverage
+broken into more focused cases:
 
 | Language | Tests | Run |
 |----------|:-----:|-----|
 | Python | 21 | `cd python && pytest -q` |
 | C# (.NET 10) | 21 | `cd csharp && dotnet test` |
 | Java (17+) | 21 | `cd java && mvn test` |
+| Go (1.22+) | 28 | `cd go && go test ./...` |
+| Rust (2021) | 28 | `cd rust && cargo test` |
+| TypeScript (Node 20+) | 29 | `cd ts && npm install && npm test` |
+
+A subtlety every port pins down exactly as the Python reference behaves: a
+**single-node cluster never commits.** A lone node elects itself, but commit
+advancement is driven solely by `AppendEntries` replies; with no peers it never
+broadcasts, never receives a reply, and so an accepted proposal sits in its log
+with `commit_index` stuck at 0.
 
 ## Design notes and numbers
 
@@ -118,6 +129,9 @@ coracle/
 ├── python/         the Raft implementation + a deterministic simulator (pytest)
 ├── csharp/         the same node/log/cluster, ported to .NET 10 (xUnit)
 ├── java/           the same, in Java 17+ (JUnit / Maven)
+├── go/             the same, in Go 1.22+ (go test)
+├── rust/           the same, in Rust 2021 (cargo test)
+├── ts/             the same, in TypeScript / Node 20+ (vitest)
 ├── bench/          benchmark.py - election and replication timing
 ├── DESIGN.md       leader election, log replication, the safety argument
 └── BENCHMARKS.md   reproducible numbers

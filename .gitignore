@@ -11,3 +11,10 @@ obj/
 # Java
 target/
 *.class
+
+# Rust
+rust/target/
+rust/Cargo.lock
+
+# TypeScript / Node
+node_modules/

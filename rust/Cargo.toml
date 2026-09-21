@@ -1,0 +1,9 @@
+[package]
+name = "coracle"
+version = "0.1.0"
+edition = "2021"
+description = "A small, readable Raft consensus implementation with a deterministic simulator."
+
+[lib]
+name = "coracle"
+path = "src/lib.rs"
