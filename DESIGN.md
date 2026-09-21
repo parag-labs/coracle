@@ -19,9 +19,9 @@ fighting timing flakiness. Concretely:
 2. Deterministic and reproducible, so a failing schedule can be replayed exactly.
 3. Small enough to read in a sitting.
 
-![leader election and replication](docs/diagrams/leader-election-sequence.png)
+![leader election, in the order the code runs it](docs/diagrams/leader-election-sequence.png)
 
-*(The same diagram renders inline as Mermaid in the [README](README.md#how-it-works); this PNG is a static export.)*
+*(The [README](README.md#how-it-works) sketches the same election inline as a compact Mermaid diagram; this PNG is the annotated version, with the real method calls, the vote restriction, and the majority and single-node rules.)*
 
 ## Key design decision: the node does no I/O
 
