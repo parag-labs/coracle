@@ -23,6 +23,13 @@ fighting timing flakiness. Concretely:
 
 *(The [README](README.md#how-it-works) sketches the same election inline as a compact Mermaid diagram; this PNG is the annotated version, with the real method calls, the vote restriction, and the majority and single-node rules.)*
 
+<details>
+<summary>Before the redraw - the earlier version of this diagram</summary>
+
+![leader election, in the order the code runs it, before the redraw](docs/diagrams/leader-election-sequence-v1.png)
+
+</details>
+
 ## Key design decision: the node does no I/O
 
 The single biggest choice here is that a `RaftNode` never touches a clock or a
