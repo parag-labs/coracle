@@ -71,12 +71,12 @@ broken into more focused cases:
 
 | Language | Tests | Run |
 |----------|:-----:|-----|
-| Python | 21 | `cd python && pytest -q` |
+| Python (3.15) | 21 | `cd python && pytest -q` |
 | C# (.NET 10) | 21 | `cd csharp && dotnet test` |
-| Java (17+) | 21 | `cd java && mvn test` |
-| Go (1.22+) | 28 | `cd go && go test ./...` |
-| Rust (2021) | 28 | `cd rust && cargo test` |
-| TypeScript (Node 20+) | 29 | `cd ts && npm install && npm test` |
+| Java (25+) | 21 | `cd java && mvn test` |
+| Go (1.27+) | 28 | `cd go && go test ./...` |
+| Rust (2024, 1.99+) | 28 | `cd rust && cargo test` |
+| TypeScript (Node 26+) | 29 | `cd ts && npm install && npm test` |
 
 A subtlety every port pins down exactly as the Python reference behaves: a
 **single-node cluster never commits.** A lone node elects itself, but commit
@@ -128,10 +128,10 @@ sequenceDiagram
 coracle/
 ├── python/         the Raft implementation + a deterministic simulator (pytest)
 ├── csharp/         the same node/log/cluster, ported to .NET 10 (xUnit)
-├── java/           the same, in Java 17+ (JUnit / Maven)
-├── go/             the same, in Go 1.22+ (go test)
-├── rust/           the same, in Rust 2021 (cargo test)
-├── ts/             the same, in TypeScript / Node 20+ (vitest)
+├── java/           the same, in Java 25+ (JUnit / Maven)
+├── go/             the same, in Go 1.27+ (go test)
+├── rust/           the same, in Rust 2024 (cargo test)
+├── ts/             the same, in TypeScript / Node 26+ (vitest)
 ├── bench/          benchmark.py - election and replication timing
 ├── DESIGN.md       leader election, log replication, the safety argument
 └── BENCHMARKS.md   reproducible numbers

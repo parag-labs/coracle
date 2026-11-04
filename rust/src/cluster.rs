@@ -100,11 +100,7 @@ impl<C: Clone> Cluster<C> {
     // ---- network control ----
 
     fn key(a: usize, b: usize) -> (usize, usize) {
-        if a < b {
-            (a, b)
-        } else {
-            (b, a)
-        }
+        if a < b { (a, b) } else { (b, a) }
     }
 
     /// Cuts the link between `a` and `b` in both directions.
@@ -145,10 +141,11 @@ impl<C: Clone> Cluster<C> {
         let duplicate_prob = self.duplicate_prob;
 
         let mut pending = std::mem::take(&mut self.inbox);
-        if self.reorder && pending.len() > 1 {
-            if let Some(rng) = self.rng.as_mut() {
-                rng.shuffle(&mut pending);
-            }
+        if self.reorder
+            && pending.len() > 1
+            && let Some(rng) = self.rng.as_mut()
+        {
+            rng.shuffle(&mut pending);
         }
 
         for msg in &pending {
