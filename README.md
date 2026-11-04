@@ -127,11 +127,11 @@ sequenceDiagram
 ```
 coracle/
 ├── python/         the Raft implementation + a deterministic simulator (pytest)
-├── csharp/         the same node/log/cluster, ported to .NET 10 (xUnit)
-├── java/           the same, in Java 25+ (JUnit / Maven)
+├── csharp/         the same node/log/cluster, ported to .NET 10 (xUnit v3)
+├── java/           the same, in Java 25+ (JUnit 6 / Maven)
 ├── go/             the same, in Go 1.27+ (go test)
 ├── rust/           the same, in Rust 2024 (cargo test)
-├── ts/             the same, in TypeScript / Node 26+ (vitest)
+├── ts/             the same, in TypeScript / Node 26+ (Vitest)
 ├── bench/          benchmark.py - election and replication timing
 ├── DESIGN.md       leader election, log replication, the safety argument
 └── BENCHMARKS.md   reproducible numbers
